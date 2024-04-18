@@ -1,0 +1,87 @@
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fcfefd;
+  font-family: "Effra Heavy", sans-serif;
+  background: url("../Img/fondos/tortoise-shell.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+.sesion {
+  margin: 50px auto;
+  width: 400px;
+  padding: 30px;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 30px;
+  text-align: center;
+}
+.sesion h1 {
+  margin: 0 0 30px;
+  padding: 0;
+  font-size: 40px;
+  color: #122333;
+}
+
+.sesion .elemento input {
+  font-family: "Effra heavy", sans-serif;
+  font-size: 20px;
+  text-align: center;
+  width: 100%;
+  padding: 10px 0;
+  margin: 20px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #122333;
+}
+.sesion .elemento input[type="submit"] {
+  font-family: "Effra heavy", sans-serif;
+  font-size: 20px;
+  padding: 15px;
+  margin-top: 30px;
+  color: rgba(18, 35, 51, 0.7);
+  background-color: #ff8000;
+  border: none;
+  border-radius: 10px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+}
+.sesion .elemento input[type="submit"]:hover {
+  background-color: #fe9f1d;
+  transition: background-color 0.3s, color 0.3s;
+}
+.sesion .elemento input[type="button"] {
+  font-family: "Effra heavy", sans-serif;
+  font-size: 20px;
+  padding: 15px;
+  margin-top: 30px;
+  color: rgba(18, 35, 51, 0.7);
+  background-color: #ff8000;
+  border: none;
+  border-radius: 10px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+}
+.sesion .elemento input[type="button"]:hover {
+  background-color: #fe9f1d;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.sesion .elemento input:focus {
+  outline: none;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 2px solid #122333;
+}
+.sesion .elemento .campoTexto::placeholder {
+  text-align: center;
+  font-size: 20px;
+  font-family: "Effra light", sans-serif;
+}

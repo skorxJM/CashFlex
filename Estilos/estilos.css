@@ -1,0 +1,82 @@
+html {
+  background-color: #fcfefd;
+  height: 100%;
+  font-family: "Effra Heavy", sans-serif;
+  background: url("../Img/fondos/flat-mountains.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+body {
+  margin-left: 0px;
+  margin-bottom: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+}
+.navbar {
+  overflow: hidden;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+.navbar li {
+  margin-right: 20px;
+  float: left;
+}
+#btnSesion {
+  float: right;
+}
+.navbar a {
+  font-size: 20px;
+  font-family: "Effra medium", sans-serif;
+  color: #122333;
+  text-decoration: none;
+  padding: 10px;
+  padding: 10px;
+  transition: color 0.3s;
+}
+.navbar a:hover {
+  color: #eb4716;
+  text-decoration: underline;
+}
+#btnInicio {
+  background-image: url("../Img/iconos/Logo.png");
+  background-size: 50px 50px;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  padding-left: 40px;
+  background-color: #fcfefd;
+  border-color: #fcfefd;
+  box-shadow: none;
+}
+
+.contenido {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 10px;
+}
+
+#logo {
+  width: 400px;
+  height: auto;
+}
+
+#slogan {
+  color: #122333;
+  font-family: "Effra Medium", sans-serif;
+  flex: 1;
+  padding: 100px;
+  font-size: 15px;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
