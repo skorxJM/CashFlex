@@ -1,82 +1,38 @@
-html {
-  background-color: #fcfefd;
-  height: 100%;
-  font-family: "Effra Heavy", sans-serif;
-  background: url("../Img/fondos/flat-mountains.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
-}
-body {
-  margin-left: 0px;
-  margin-bottom: 0px;
-  margin-right: 0px;
-  margin-top: 0px;
-}
-.navbar {
-  overflow: hidden;
-  padding-top: 30px;
-  padding-bottom: 30px;
-  width: 100%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-.navbar ul {
-  list-style-type: none;
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  text-align: center;
+  font-family: "Effra Heavy", sans-serif;
 }
-.navbar li {
-  margin-right: 20px;
-  float: left;
-}
-#btnSesion {
-  float: right;
-}
-.navbar a {
-  font-size: 20px;
-  font-family: "Effra medium", sans-serif;
-  color: #122333;
-  text-decoration: none;
-  padding: 10px;
-  padding: 10px;
-  transition: color 0.3s;
-}
-.navbar a:hover {
-  color: #eb4716;
-  text-decoration: underline;
-}
-#btnInicio {
-  background-image: url("../Img/iconos/Logo.png");
-  background-size: 50px 50px;
-  background-repeat: no-repeat;
-  background-position: 10px center;
-  padding-left: 40px;
+body {
   background-color: #fcfefd;
-  border-color: #fcfefd;
-  box-shadow: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cpolygon fill='%23ff8000' points='957 450 539 900 1396 900'/%3E%3Cpolygon fill='%23eb4716' points='957 450 872.9 900 1396 900'/%3E%3Cpolygon fill='%23ff8704' points='-60 900 398 662 816 900'/%3E%3Cpolygon fill='%23f05312' points='337 900 398 662 816 900'/%3E%3Cpolygon fill='%23ff8d0b' points='1203 546 1552 900 876 900'/%3E%3Cpolygon fill='%23f45f0e' points='1203 546 1552 900 1162 900'/%3E%3Cpolygon fill='%23fe9311' points='641 695 886 900 367 900'/%3E%3Cpolygon fill='%23f86a09' points='587 900 641 695 886 900'/%3E%3Cpolygon fill='%23fe9917' points='1710 900 1401 632 1096 900'/%3E%3Cpolygon fill='%23fc7504' points='1710 900 1401 632 1365 900'/%3E%3Cpolygon fill='%23fe9f1d' points='1210 900 971 687 725 900'/%3E%3Cpolygon fill='%23ff8000' points='943 900 1210 900 971 687'/%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .contenido {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 32px;
   align-items: center;
-  padding: 10px;
-  border: 10px;
 }
 
 #logo {
-  width: 400px;
+  width: 50%;
+  max-width: 400px;
   height: auto;
 }
 
 #slogan {
   color: #122333;
-  font-family: "Effra Medium", sans-serif;
-  flex: 1;
-  padding: 100px;
-  font-size: 15px;
+  padding: 5%;
+  font-size: 1vw;
   text-align: center;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-family: "Effra medium", sans-serif;
+}
+
+#slogan h1 {
+  font-family: "Effra medium", sans-serif;
 }

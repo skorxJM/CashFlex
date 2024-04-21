@@ -4,42 +4,46 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Iniciar Sesión</title>
+    <script
+      src="https://kit.fontawesome.com/d1c3c8f70d.js"
+      crossorigin="anonymous"
+    ></script>
     <link href="Estilos/estilosLog.css" rel="stylesheet" />
     <link href="https://fonts.cdnfonts.com/css/effra-heavy" rel="stylesheet" />
   </head>
   <body>
-    <div class="sesion">
-      <h1>Bienvenido</h1>
-      <form id="iniciarS" name="iniciarS" method="post">
-        <div class="elemento">
-          <input
-            type="text"
-            class="campoTexto"
-            id="usuario"
-            name="usuario"
-            placeholder="Usuario"
-            required="true"
-          />
+    <section>
+      <div class="sesion">
+        <div class="formulario">
+          <form action="#">
+            <h1>Bienvenido</h1>
+
+            <div class="input-contenedor">
+              <i class="fa-solid fa-user"></i>
+              <input type="text" required />
+              <label for="#">Usuario</label>
+            </div>
+
+            <div class="input-contenedor">
+              <i class="fa-solid fa-lock"></i>
+              <input type="password" required />
+              <label for="#">Contraseña</label>
+            </div>
+            <div class="olvidar">
+              <label for="#">
+                <input type="checkbox" />Recordarme
+                <a href="#">Olvidé mi contraseña</a>
+              </label>
+            </div>
+          </form>
+          <div>
+            <button>Acceder</button>
+            <div class="registrar">
+              <p>No Tengo Cuenta <a href="register.html">Crear Una</a></p>
+            </div>
+          </div>
         </div>
-        <br />
-        <div class="elemento">
-          <input
-            type="password"
-            class="campoTexto"
-            id="contraseña"
-            name="contraseña"
-            placeholder="Contraseña"
-            required="true"
-          />
-        </div>
-        <br />
-        <div class="elemento">
-          <input type="submit" value="Iniciar Sesión" />
-        </div>
-        <div class="elemento">
-          <input type="button" value="¿Has Olvidado La Contraseña?" />
-        </div>
-      </form>
-    </div>
+      </div>
+    </section>
   </body>
 </html>
