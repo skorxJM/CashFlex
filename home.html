@@ -10,25 +10,46 @@
   </head>
   <body>
     <div id="navbar"></div>
-    <div class="home">
+    <section class="home">
       <div class="contenedor-botones">
-        <button class="btn-opc" id="ingresos" type="button">
-          <img src="Img/iconos/Ingreso.png" />
-        </button>
-        <button class="btn-opc" type="button">
-          <img src="Img/iconos/Gasto.png" />
-        </button>
-        <button class="btn-opc" type="button">
-          <img src="Img/iconos/metas.png" />
-        </button>
-        <button class="btn-opc" type="button">
-            <img src="Img/iconos/presupuesto.png" />
-        </button>
-        <button class="btn-opc" type="button">
-            <img src="Img/iconos/Informe.png" />
-        </button>
+        <div class="btn-opc">
+          <a href="ingresos.html">
+            <button type="button">
+              <img src="Img/iconos/Ingreso.png" />
+            </button>
+          </a>
+          <label>Ingresos</label>
+        </div>
+
+        <div class="btn-opc">
+          <a href="gastos.html">
+            <button type="button">
+              <img src="Img/iconos/Gasto.png" />
+            </button>
+          </a>
+          <label>Gastos</label>
+        </div>
+
+        <div class="btn-opc">
+          <a href="metas.html">
+            <button type="button">
+              <img src="Img/iconos/metas.png" />
+            </button>
+          </a>
+          <label>Metas</label>
+        </div>
+
+
+        <div class="btn-opc">
+          <a href="#">
+            <button type="button">
+              <img src="Img/iconos/Informe.png" />
+            </button>
+          </a>
+          <label>Informes</label>
+        </div>
       </div>
-    </div>
+    </section>
     <script>
       fetch("navbar.html")
         .then((response) => response.text())

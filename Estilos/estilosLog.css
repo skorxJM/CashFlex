@@ -37,6 +37,7 @@ body {
   margin: 30px 0;
   width: 300px;
   border-bottom: 2px solid #122333;
+  font-family: "Effra medium", sans-serif;
 }
 .input-contenedor label {
   position: absolute;
@@ -47,7 +48,7 @@ body {
   font-size: 1rem;
   pointer-events: none;
   transition: 0.3s;
- 
+  font-family: "Effra medium", sans-serif;
 }
 input:focus ~ label,
 input:valid ~ label {
