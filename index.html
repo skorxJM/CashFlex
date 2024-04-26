@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Cashflex</title>
     <link rel="icon" href="../Img/iconos/CF-icon.svg" type="image/svg+xml" />
-    <link href="Estilos/estilos.css" rel="stylesheet" />
+    <link href="../Estilos/estilos.css" rel="stylesheet" />
     <link href="https://fonts.cdnfonts.com/css/effra-heavy" rel="stylesheet" />
   </head>
   <body>
     <div id="navbar"></div>
     <div class="contenido">
-      <img id="logo" src="Img/iconos/CF-Logo.svg" />
+      <img id="logo" src="../Img/iconos/CF-Logo.svg" />
       <div id="slogan">
         <h1>
           Tu dinero, tu libertad: gestiona, ahorra y alcanza tus metas
@@ -20,7 +20,7 @@
       </div>
     </div>
     <script>
-      fetch("navbar.html")
+      fetch("../Contenido/navBar.html")
         .then((response) => response.text())
         .then((data) => {
           document.getElementById("navbar").innerHTML = data;
