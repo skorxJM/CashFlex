@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Presupuestos</title>
+    <link rel="stylesheet" href="Estilos/estilosOpc.css" />
+    <link href="https://fonts.cdnfonts.com/css/effra-heavy" rel="stylesheet" />
+  </head>
+  <header>
+    <section class="encabezado">
+      <div id="h1" class="elemento-enc">
+        <h1>Agregar Presupuesto</h1>
+      </div>
+
+      <div class="elemento-enc">
+        <button>L. Presupuestos</button>
+      </div>
+
+      <div class="elemento-enc">
+        <a href="home.html">
+          <button>
+            <img src="Img/iconos/Salir.png" />
+          </button>
+        </a>
+      </div>
+    </section>
+    <form>
+      <section class="contenido">
+        <div class="elemento-con">
+          <input type="text" required="true" placeholder="Descripción" />
+        </div>
+
+        <div class="elemento-con">
+          <input
+            type="text"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            required="true"
+            placeholder="$0.00"
+          />
+        </div>
+
+        <div class="elemento-con">
+          <button>Agregar Presupuesto +</button>
+        </div>
+      </section>
+    </form>
+  </header>
+  <body></body>
+</html>
