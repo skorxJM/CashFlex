@@ -8,26 +8,30 @@
       src="https://kit.fontawesome.com/d1c3c8f70d.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="icon" href="../Img/iconos/CF-icon.svg" type="image/svg+xml" />
-    <link href="../Estilos/estilosLog.css" rel="stylesheet" />
+    <link
+      rel="icon"
+      href="resources/Img/iconos/CF-icon.svg"
+      type="image/svg+xml"
+    />
+    <link href="resources/Estilos/estilosLog.css" rel="stylesheet" />
     <link href="https://fonts.cdnfonts.com/css/effra-heavy" rel="stylesheet" />
   </head>
   <body>
     <section>
       <div class="sesion">
         <div class="formulario">
-          <form action="#">
+          <form action="auth" method="post">
             <h1>Bienvenido</h1>
 
             <div class="input-contenedor">
               <i class="fa-solid fa-user"></i>
-              <input type="text" required />
+              <input type="text" name="username" id="username" required />
               <label for="#">Usuario</label>
             </div>
 
             <div class="input-contenedor">
               <i class="fa-solid fa-lock"></i>
-              <input type="password" required />
+              <input type="password" name="password" id="password" required />
               <label for="#">Contraseña</label>
             </div>
             <div class="olvidar">
@@ -36,15 +40,29 @@
                 <a href="#">Olvidé mi contraseña</a>
               </label>
             </div>
+            <input type="submit" value="Iniciar Sesión"/>
           </form>
           <div>
-            <button>Acceder</button>
             <div class="registrar">
-              <p>No Tengo Cuenta <a href="../Contenido/register.html">Crear Una</a></p>
+              <p>No Tengo Cuenta <a href="register">Crear Una</a></p>
             </div>
           </div>
         </div>
       </div>
     </section>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <% if(typeof alert != "undefined") { %>
+    <script>
+      Swal.fire({
+        title: "<%= alertTitle %>",
+        text: "<%= alertMessage %>",
+        icon: "<%= alertIcon %>",
+        showConfirmButton: <%= showConfirmButton %>,
+        timer: <%= timer %>
+      }).then(()=>{
+        window.location= "/<%= ruta %>"
+      })
+    </script>
+    <% } %>
   </body>
 </html>
