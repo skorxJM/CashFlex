@@ -27,10 +27,20 @@ app.use(
 const connection = require("./database/db");
 
 app.get("/", (req, res) => {
-  res.render("index");
+  if (req.session.loggedin) {
+    res.render("home", {
+      login: true,
+      name: req.session.name,
+    });
+  } else {
+    res.render("index", {
+      login: false,
+      name: "Debe iniciar Sesión",
+    });
+  }
 });
 app.get("/index", (req, res) => {
-  res.render("index");
+  res.render("index", { login: req.session.loggedin });
 });
 app.get("/login", (req, res) => {
   res.render("login");
@@ -39,6 +49,24 @@ app.get("/register", (req, res) => {
   res.render("register");
 });
 
+app.get("/ingresos", (req, res) => {
+  res.render("ingresos");
+});
+app.get("/gastos", (req, res) => {
+  res.render("gastos");
+});
+app.get("/metas", (req, res) => {
+  res.render("metas");
+});
+app.get("/register-or-home", (req, res) => {
+  if (req.session.loggedin) {
+    res.redirect("/home");
+  } else {
+    res.redirect("/register");
+  }
+});
+
+// Registro
 app.post("/register", async (req, res) => {
   const username = req.body.username;
   const email = req.body.email;
@@ -60,8 +88,8 @@ app.post("/register", async (req, res) => {
           alertTitle: "Registro",
           alertMessage: "¡Registro exitoso!",
           alertIcon: "success",
-          showConfirmButton: true,
-          timer: false,
+          showConfirmButton: false,
+          timer: 1000,
           ruta: "",
         });
       }
@@ -69,6 +97,7 @@ app.post("/register", async (req, res) => {
   );
 });
 
+// Autentificacion
 app.post("/auth", async (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
@@ -92,19 +121,43 @@ app.post("/auth", async (req, res) => {
             ruta: "login",
           });
         } else {
+          req.session.loggedin = true;
+          req.session.name = results[0].username;
+          req.session.email = results[0].email
           res.render("login", {
             alert: true,
             alertTitle: "Ingreso",
             alertMessage: "¡Ingreso Exitoso!",
             alertIcon: "success",
-            showConfirmButton: true,
-            timer: false,
-            ruta: "",
+            showConfirmButton: false,
+            timer: 1000,
+            ruta: "home",
           });
         }
       }
     );
   }
+});
+
+app.get("/home", (req, res) => {
+  if (req.session.loggedin) {
+    res.render("home", {
+      login: true,
+      name: req.session.name,
+      email: req.session.email,
+    });
+  } else {
+    res.render("home", {
+      login: false,
+      name: "Debe iniciar Sesión",
+    });
+  }
+});
+
+app.get("/logout", (req, res) => {
+  req.session.destroy(()=>{
+    res.redirect('/')
+  })
 });
 
 app.listen(3000, (req, res) => {

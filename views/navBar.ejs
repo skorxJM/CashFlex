@@ -1,17 +1,64 @@
 <head>
   <link href="resources/Estilos/estilosNav.css" rel="stylesheet" />
+  <script
+    src="https://kit.fontawesome.com/d1c3c8f70d.js"
+    crossorigin="anonymous"
+  ></script>
+  <script src="resources/Js/nav.js"></script>
 </head>
 <header class="header">
   <div class="logo">
-    <a href="index"
-      ><img src="resources/Img/iconos/CF-Logo.svg" alt="logo-cashflex" />
+    <a href="index">
+      <img src="resources/Img/iconos/CF-Logo.svg" alt="logo-cashflex" />
     </a>
   </div>
   <nav>
     <ul class="nav-links">
+      <% if(login){ %>
       <li><a href="#">Acerca de</a></li>
-      <li><a href="login">Iniciar Sesión</a></li>
-      <li><a href="register">Registrar</a></li>
+      <li class="dropdown">
+        <a><i class="fas fa-user"></i></a>
+        <div
+          class="dropdown__wrapper hide dropdown__wrapper--fade-in none navbar"
+        >
+          <div class="dropdown__group">
+            <div class="user-name"><%= name %></div>
+            <div class="email"><%= email %></div>
+          </div>
+          <hr class="divider" />
+          <nav>
+            <ul>
+              <li>
+                <img src="resources/Img/iconos/profile.svg" alt="Perfil" /> Mi
+                Perfil
+              </li>
+              <li>
+                <img
+                  src="resources/Img/iconos/settings.svg"
+                  alt="Configuración"
+                />
+                Configuración
+              </li>
+            </ul>
+            <hr class="divider" />
+            <ul>
+              <li style="color: #eb4716">
+             
+                  <img
+                    src="resources/Img/iconos/logout.svg"
+                    alt="Cerrar Sesión"
+                  />Cerrar Sesión
+                
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </li>
+      <% } else { %>
+      <li><a href="#">Acerca de</a></li>
+      <li><a href="login" class="cta-button"> Iniciar Sesión </a></li>
+      <li><a href="register" class="cta-button">Registrarse</a></li>
+      <%}%>
     </ul>
   </nav>
 </header>

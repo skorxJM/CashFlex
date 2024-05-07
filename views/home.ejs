@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inicio</title>
+    <link href="resources/Estilos/estilosHome.css" rel="stylesheet" />
+    <link
+      rel="icon"
+      href="resources/Img/iconos/CF-icon.svg"
+      type="image/svg+xml"
+    />
+    <link href="https://fonts.cdnfonts.com/css/effra-heavy" rel="stylesheet" />
+  </head>
+  <body>
+    <%- include('navBar.ejs')%>
+    <section class="home">
+     
+      
+      <div class="contenedor-botones">
+        <div class="btn-opc">
+          <a href="ingresos">
+            <button type="button">
+              <img src="resources/Img/iconos/Ingreso.png" />
+            </button>
+          </a>
+          <label>Ingresos</label>
+        </div>
+
+        <div class="btn-opc">
+          <a href="gastos">
+            <button type="button">
+              <img src="resources/Img/iconos/Gasto.png" />
+            </button>
+          </a>
+          <label>Gastos</label>
+        </div>
+
+        <div class="btn-opc">
+          <a href="metas">
+            <button type="button">
+              <img src="resources/Img/iconos/metas.png" />
+            </button>
+          </a>
+          <label>Metas</label>
+        </div>
+
+        <div class="btn-opc">
+          <a href="#">
+            <button type="button">
+              <img src="resources/Img/iconos/Informe.png" />
+            </button>
+          </a>
+          <label>Informes</label>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   font-family: "Effra", sans-serif;
+  letter-spacing: 0.05rem;
 }
 
 section {
@@ -25,7 +26,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 30px;
+  border-radius: 3px;
 }
 .sesion h1 {
   font-size: 2.3rem;
@@ -93,21 +94,27 @@ input:valid ~ label {
   text-decoration: underline;
 }
 input[type="submit"] {
+  font-family: "Effra medium", sans-serif;
+  box-shadow: 0 0 0 0 rgba(255, 128, 0, 1);
+  outline: 2px solid;
+  outline-color: #ff8000;
+  outline-offset: 0;
+  border: none;
   width: 100%;
   height: 40px;
-  border: none;
-  border-radius: 15px;
+  border-radius: .5px;
   background: #ff8000;
   cursor: pointer;
-  font-family: "Effra heavy", sans-serif;
-  outline: none;
-  font-size: 1rem;
+  font-size: 1.1rem;
   transition: all 0.3s;
+ 
 }
 
 input[type="submit"]:hover {
-  background: #fe9f1d;
-  transform: scale(1.05);
+  box-shadow: 0 0 0 2px rgba(254, 159, 29, 1);
+  outline-color: rgba(255, 255, 255, 0);
+  outline-offset: 15px;
+  background-color: #FE9F1D;
 }
 .registrar {
   font-size: 0.8rem;

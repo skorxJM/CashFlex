@@ -1,38 +1,95 @@
-* {
+html * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Effra Heavy", sans-serif;
+  font-family: "Effra medium", sans-serif;
 }
 body {
+  height: 100%;
   background-color: #fcfefd;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cpolygon fill='%23ff8000' points='957 450 539 900 1396 900'/%3E%3Cpolygon fill='%23eb4716' points='957 450 872.9 900 1396 900'/%3E%3Cpolygon fill='%23ff8704' points='-60 900 398 662 816 900'/%3E%3Cpolygon fill='%23f05312' points='337 900 398 662 816 900'/%3E%3Cpolygon fill='%23ff8d0b' points='1203 546 1552 900 876 900'/%3E%3Cpolygon fill='%23f45f0e' points='1203 546 1552 900 1162 900'/%3E%3Cpolygon fill='%23fe9311' points='641 695 886 900 367 900'/%3E%3Cpolygon fill='%23f86a09' points='587 900 641 695 886 900'/%3E%3Cpolygon fill='%23fe9917' points='1710 900 1401 632 1096 900'/%3E%3Cpolygon fill='%23fc7504' points='1710 900 1401 632 1365 900'/%3E%3Cpolygon fill='%23fe9f1d' points='1210 900 971 687 725 900'/%3E%3Cpolygon fill='%23ff8000' points='943 900 1210 900 971 687'/%3E%3C/svg%3E");
   background-attachment: fixed;
   background-size: cover;
 }
+p {
+  font-size: 1.1rem;
+}
+a {
+  text-decoration: none;
+}
+h1 {
+  font-size: 3rem;
+  padding-bottom: 2%;
+}
 
-.contenido {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 32px;
+.contenedor_cta {
+  padding: 1.1rem 0;
+}
+
+.button {
+  color: #122333;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 2.5rem;
+  max-width: 160px;
+  width: 100%;
+  letter-spacing: 0.3rem;
+  font-weight: 600;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  transition: all 1s ease-in;
+}
+
+.button:hover {
+  color: #ff8000;
+}
+
+.button svg {
+  height: 40px;
+  left: 0;
+  top: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.button rect {
+  fill: none;
+  stroke: #122333;
+  stroke-width: 3;
+  stroke-dasharray: 450, 0;
+  transition: all 0.5s linear;
+}
+
+.button:hover rect {
+  stroke-width: 5;
+  stroke-dasharray: 20, 300;
+  stroke-dashoffset: 48;
+  stroke: #ff8000;
+  transition: all 2s cubic-bezier(0.22, 1, 0.25, 1);
+}
+
+.hero {
+  height: 70vh;
+  display: flex;
+  align-items: center;
+}
+.contenedor_hero {
+  max-width: 300rem;
+  padding: 10%;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
-#logo {
-  width: 50%;
-  max-width: 400px;
+.texto {
+  flex: 1; /* El texto ocupará todo el espacio restante */
+  margin: 0 10rem 0 0;
+}
+
+.contenedor_hero img {
+  width: 25rem;
   height: auto;
-}
-
-#slogan {
-  color: #122333;
-  padding: 5%;
-  font-size: 1vw;
-  text-align: center;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  font-family: "Effra medium", sans-serif;
-}
-
-#slogan h1 {
-  font-family: "Effra medium", sans-serif;
 }
