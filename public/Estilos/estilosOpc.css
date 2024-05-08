@@ -107,3 +107,53 @@ button:hover {
   outline-offset: 15px;
   background-color: #fe9f1d;
 }
+
+/* Para pantallas de tamaño medio y más grandes */
+@media screen and (min-width: 768px) {
+  .encabezado {
+    margin: 40px auto 10px; /* Centra el encabezado */
+    max-width: 800px; /* Limita el ancho del encabezado */
+  }
+
+  .contenido {
+    margin: 10px auto; /* Centra el contenido */
+    max-width: 800px; /* Limita el ancho del contenido */
+  }
+
+  .contenido input {
+    width: 100%; /* Hace que los inputs ocupen todo el ancho disponible */
+    max-width: 400px; /* Limita el ancho máximo de los inputs */
+  }
+
+  .contenido button {
+    min-width: 200px; /* Mantiene el ancho mínimo de los botones */
+    width: 100%; /* Hace que los botones ocupen todo el ancho disponible */
+  }
+}
+
+/* Para pantallas más pequeñas */
+@media screen and (max-width: 767px) {
+  .encabezado {
+    grid-template-columns: 1fr; /* Cambia a una sola columna */
+  }
+
+  .elemento-enc {
+    justify-content: center; /* Centra los elementos del encabezado */
+    margin: 5px; /* Reduce el espacio entre los elementos */
+  }
+
+  .contenido {
+    margin: 10px auto; /* Centra el contenido */
+  }
+
+  .contenido input {
+    width: 100%; /* Hace que los inputs ocupen todo el ancho disponible */
+    max-width: 300px; /* Limita el ancho máximo de los inputs */
+  }
+
+  .contenido button {
+    min-width: 150px; /* Mantiene el ancho mínimo de los botones */
+    width: 100%; /* Hace que los botones ocupen todo el ancho disponible */
+  }
+}
+

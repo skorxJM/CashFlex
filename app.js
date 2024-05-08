@@ -40,7 +40,11 @@ app.get("/", (req, res) => {
   }
 });
 app.get("/index", (req, res) => {
-  res.render("index", { login: req.session.loggedin });
+  res.render("index", {
+    login: req.session.loggedin,
+    name: req.session.name,
+    email: req.session.email,
+  });
 });
 app.get("/login", (req, res) => {
   res.render("login");
@@ -123,7 +127,7 @@ app.post("/auth", async (req, res) => {
         } else {
           req.session.loggedin = true;
           req.session.name = results[0].username;
-          req.session.email = results[0].email
+          req.session.email = results[0].email;
           res.render("login", {
             alert: true,
             alertTitle: "Ingreso",
@@ -155,9 +159,9 @@ app.get("/home", (req, res) => {
 });
 
 app.get("/logout", (req, res) => {
-  req.session.destroy(()=>{
-    res.redirect('/')
-  })
+  req.session.destroy(() => {
+    res.redirect("/");
+  });
 });
 
 app.listen(3000, (req, res) => {
