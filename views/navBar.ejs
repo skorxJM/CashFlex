@@ -17,7 +17,7 @@
       <% if(login){ %>
       <li><a href="#">Acerca de</a></li>
       <li class="dropdown">
-        <a><i class="fas fa-user"></i></a>
+        <a><i class="fa-regular fa-user"></i></a>
         <div
           class="dropdown__wrapper hide dropdown__wrapper--fade-in none navbar"
         >
@@ -26,29 +26,28 @@
             <div class="email"><%= email %></div>
           </div>
           <hr class="divider" />
-          <nav>
+          <nav class="menu-usuario">
             <ul>
               <li>
-                <img src="resources/Img/iconos/profile.svg" alt="Perfil" /> Mi
-                Perfil
+                <img src="resources/Img/iconos/profile.svg" alt="Perfil" />
+                <a>Mi Perfil</a>
               </li>
               <li>
                 <img
                   src="resources/Img/iconos/settings.svg"
                   alt="Configuración"
                 />
-                Configuración
+                <a>Configuración</a>
               </li>
             </ul>
             <hr class="divider" />
             <ul>
-              <li style="color: #eb4716">
-             
-                  <img
-                    src="resources/Img/iconos/logout.svg"
-                    alt="Cerrar Sesión"
-                  />Cerrar Sesión
-                
+              <li>
+                <img
+                  src="resources/Img/iconos/logout.svg"
+                  alt="Cerrar Sesión"
+                />
+                <a href="/logout" style="color: #eb4716"> Cerrar Sesión </a>
               </li>
             </ul>
           </nav>

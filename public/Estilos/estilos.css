@@ -85,11 +85,61 @@ h1 {
 }
 
 .texto {
-  flex: 1; /* El texto ocupará todo el espacio restante */
+  flex: 1; 
   margin: 0 10rem 0 0;
 }
 
 .contenedor_hero img {
   width: 25rem;
   height: auto;
+}
+
+/* Estilos para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+  .hero {
+    height: auto;
+    padding: 10% 5%;
+  }
+
+  .contenedor_hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .contenedor_hero img {
+    margin-top: 2rem;
+    max-width: 80%;
+    height: auto;
+  }
+
+  .texto {
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 2rem;
+    padding-bottom: 1rem;
+  }
+
+  .button {
+    max-width: 100%;
+    margin-top: 1rem;
+  }
+}
+
+/* Estilos para pantallas medianas y grandes */
+@media screen and (min-width: 769px) {
+  .contenedor_hero {
+    max-width: 2000px;
+    margin: 0 auto;
+  }
+
+  .hero {
+    height: 70vh;
+  }
+}
+@media screen and (max-width: 660px) {
+  .contenedor_hero img {
+    display: none;
+  }
 }

@@ -126,6 +126,7 @@ app.post("/auth", async (req, res) => {
           });
         } else {
           req.session.loggedin = true;
+          req.session.id_usu = results[0].id_usu;
           req.session.name = results[0].username;
           req.session.email = results[0].email;
           res.render("login", {
@@ -141,6 +142,168 @@ app.post("/auth", async (req, res) => {
       }
     );
   }
+});
+
+// Registro de ingreso
+app.post("/registrarIngreso", async (req, res) => {
+  const fecha = req.body.fecha;
+  const descripcion = req.body.descripcion;
+  const cantidad = req.body.cantidad;
+  const id_usu = req.session.id_usu;
+
+  connection.query(
+    "INSERT INTO ingreso SET ?",
+    {
+      fecha: fecha,
+      Descripcion: descripcion,
+      cantidad: cantidad,
+      Usuario_id_usu: id_usu,
+    },
+    async (error, results) => {
+      if (error) {
+        console.log(error);
+      } else {
+        res.render("ingresos", {
+          alert: true,
+          alertTitle: "Ingreso",
+          alertMessage: "¡Ingreso registrado correctamente!",
+          alertIcon: "success",
+          showConfirmButton: true,
+          timer: false,
+          ruta: "ingresos",
+        });
+      }
+    }
+  );
+});
+
+//lista de ingresos
+app.get("/listaIng", (req, res) => {
+  const id_usu = req.session.id_usu;
+  const sql = "SELECT * FROM ingreso WHERE Usuario_id_usu = ?";
+  connection.query(sql, [id_usu], (err, results) => {
+    if (err) {
+      // Manejo de errores
+      return res.status(500).send("Error al obtener el historial");
+    }
+    // Renderizar la página HTML con los resultados
+    res.render("listaIng", { ingresos: results });
+  });
+});
+
+// Editar ingreso
+app.post("/editIngreso/:id", async (req, res) => {
+  const { fecha, descripcion, cantidad } = req.body;
+  const id_usu = req.session.id_usu;
+  const id = req.params.id;
+
+  connection.query(
+    "UPDATE ingreso SET ? WHERE id_ingresos = ? AND Usuario_id_usu = ?",
+    [
+      {
+        fecha: fecha,
+        Descripcion: descripcion,
+        cantidad: cantidad,
+      },
+      id,
+      id_usu,
+    ],
+    async (error, results) => {
+      if (error) {
+        console.log(error);
+        res.json({ success: false });
+      } else {
+        res.json({ success: true });
+      }
+    }
+  );
+});
+
+// Eliminar ingreso
+app.post("/deleteIngreso/:id?", async (req, res) => {
+  const id_usu = req.session.id_usu;
+  const id = req.params.id_ingresos;
+
+  connection.query(
+    "DELETE FROM ingreso WHERE id_ingresos = ? AND Usuario_id_usu = ?",
+    [id, id_usu],
+    async (error, results) => {
+      if (error) {
+        console.log(error);
+        res.json({ success: false });
+      } else {
+        res.json({ success: true });
+      }
+    }
+  );
+});
+
+// Registro de gasto
+app.post("/registrarGasto", async (req, res) => {
+  const fecha = req.body.fecha;
+  const descripcion = req.body.descripcion;
+  const cantidad = req.body.cantidad;
+  const id_usu = req.session.id_usu;
+
+  connection.query(
+    "INSERT INTO gasto SET ?",
+    {
+      fecha: fecha,
+      Descripcion: descripcion,
+      cantidad: cantidad,
+      Usuario_id_usu: id_usu,
+    },
+    async (error, results) => {
+      if (error) {
+        console.log(error);
+      } else {
+        res.render("gastos", {
+          alert: true,
+          alertTitle: "Gasto",
+          alertMessage: "¡Gasto registrado correctamente!",
+          alertIcon: "success",
+          showConfirmButton: true,
+          timer: false,
+          ruta: "gastos",
+        });
+      }
+    }
+  );
+});
+
+// Registro de meta
+app.post("/registrarMeta", async (req, res) => {
+  const fecha = req.body.fecha;
+  const fecha_vencimiento = req.body.fecha_vencimiento;
+  const descripcion = req.body.descripcion;
+  const cantidad = req.body.cantidad;
+  const id_usu = req.session.id_usu;
+
+  connection.query(
+    "INSERT INTO gasto SET ?",
+    {
+      fecha: fecha,
+      fecha: fecha_vencimiento,
+      Descripcion: descripcion,
+      cantidad: cantidad,
+      Usuario_id_usu: id_usu,
+    },
+    async (error, results) => {
+      if (error) {
+        console.log(error);
+      } else {
+        res.render("metas", {
+          alert: true,
+          alertTitle: "Meta",
+          alertMessage: "¡Meta registrada correctamente!",
+          alertIcon: "success",
+          showConfirmButton: true,
+          timer: false,
+          ruta: "metas",
+        });
+      }
+    }
+  );
 });
 
 app.get("/home", (req, res) => {

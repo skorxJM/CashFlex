@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const profile = document.querySelector('.fas.fa-user');
+    const profile = document.querySelector('.fa-regular.fa-user');
     const dropdown = document.querySelector('.dropdown__wrapper');
 
     profile.addEventListener('click', () => {

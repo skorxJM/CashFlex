@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://fonts.cdnfonts.com/css/effra-heavy" rel="stylesheet" />
+    <script
+      src="https://kit.fontawesome.com/d1c3c8f70d.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="resources/Estilos/estilosTable.css" />
+    <title>Lista de Ingresos</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="table-wrapper">
+        <div class="table-title">
+          <div class="row">
+            <div class="col-sm-8"><h2>Lista de Ingresos</h2></div>
+            <div class="col-sm-4">
+              <a href="ingresos">
+                <button type="button" class="btn btn-info add-new">
+                  <i class="fa fa-plus"></i> Añadir Nuevo
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Descripción</th>
+              <th>Valor</th>
+              <th>Fecha</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% ingresos.forEach(ingreso => { %>
+            <tr>
+              <td data-name="Descripcion"><%= ingreso.Descripcion %></td>
+              <td data-name="cantidad">$<%= ingreso.cantidad %></td>
+              <td data-name="fecha"><%= ingreso.fecha %></td>
+              <td>
+                <a href="#" class="add"
+                  ><i
+                    class="fa-regular fa-floppy-disk save"
+                    data-id="<%= ingreso.id_ingreso %>"
+                    data-toggle="tooltip"
+                    title="Save"
+                  ></i
+                ></a>
+                <a href="#" class="edit"
+                  ><i
+                    class="fa fa-edit"
+                    data-id="<%= ingreso.id_ingreso %>"
+                    data-toggle="tooltip"
+                    title="Edit"
+                  ></i
+                ></a>
+                <a href="#" class="delete"
+                  ><i
+                    class="fa-regular fa-trash-can"
+                    data-id="<%= ingreso.id_ingreso %>"
+                    data-toggle="tooltip"
+                    title="Delete"
+                  ></i
+                ></a>
+              </td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script src="resources/Js/table.js"></script>
+  </body>
+</html>

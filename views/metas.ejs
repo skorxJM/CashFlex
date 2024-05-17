@@ -6,6 +6,11 @@
     <title>Metas</title>
     <link rel="stylesheet" href="resources/Estilos/estilosOpc.css" />
     <link href="https://fonts.cdnfonts.com/css/effra-heavy" rel="stylesheet" />
+    <link
+      rel="icon"
+      href="resources/Img/iconos/CF-icon.svg"
+      type="image/svg+xml"
+    />
   </head>
   <body>
     <section class="encabezado">
@@ -25,29 +30,30 @@
         </a>
       </div>
     </section>
-    <form>
+    <form action="/registrarMeta" method="post">
       <section class="contenido">
         <div class="elemento-fecha">
-          <input id="fecha" type="date" required="true" />
+          <input id="fecha" name="fecha_rgs" type="date" required="true" />
         </div>
 
         <div class="elemento-con">
-          <input type="text" required="true" placeholder="Descripción" />
+          <input type="text" name="descripcion" required="true" placeholder="Descripción" />
         </div>
 
         <div class="elemento-con">
           <input
             type="text"
+            name="fecha_vnc"
             required="true"
             placeholder="¿Cuando quieres lograrlo?"
             onfocus="(this.type='date')"
-          
           />
         </div>
 
         <div class="elemento-con">
           <input
             type="text"
+            name="cantidad"
             inputmode="numeric"
             pattern="[0-9]*"
             required="true"

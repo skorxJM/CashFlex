@@ -6,6 +6,11 @@
     <title>Gastos</title>
     <link rel="stylesheet" href="resources/Estilos/estilosOpc.css" />
     <link href="https://fonts.cdnfonts.com/css/effra-heavy" rel="stylesheet" />
+    <link
+      rel="icon"
+      href="resources/Img/iconos/CF-icon.svg"
+      type="image/svg+xml"
+    />
   </head>
   <body>
     <section class="encabezado">
@@ -25,14 +30,19 @@
         </a>
       </div>
     </section>
-    <form>
+    <form action="/registrarGasto" method="post">
       <section class="contenido">
         <div class="elemento-fecha">
-          <input id="fecha" type="date" required="true" />
+          <input id="fecha" name="fecha" type="date" required="true" />
         </div>
 
         <div class="elemento-con">
-          <input type="text" required="true" placeholder="Descripción" />
+          <input
+            type="text"
+            name="descripcion"
+            required="true"
+            placeholder="Descripción"
+          />
         </div>
 
         <div class="elemento-con">
@@ -40,6 +50,7 @@
             type="text"
             inputmode="numeric"
             pattern="[0-9]*"
+            name="cantidad"
             required="true"
             placeholder="$0.00"
           />
@@ -53,5 +64,19 @@
       </section>
     </form>
     <script src="resources/Js/opc.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <% if(typeof alert != "undefined") { %>
+    <script>
+      Swal.fire({
+        title: "<%= alertTitle %>",
+        text: "<%= alertMessage %>",
+        icon: "<%= alertIcon %>",
+        showConfirmButton: <%= showConfirmButton %>,
+        timer: <%= timer %>
+      }).then(()=>{
+        window.location= "/<%= ruta %>"
+      })
+    </script>
+    <% } %>
   </body>
 </html>

@@ -1,150 +1,104 @@
-html * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: "Effra medium", sans-serif;
-}
-
 body {
+  height: 100%;
+  color: #122333;
   background-color: #fcfefd;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2000 1500'%3E%3Cdefs%3E%3Crect stroke='%23FCFEFD' stroke-width='.5' width='1' height='1' id='s'/%3E%3Cpattern id='a' width='3' height='3' patternUnits='userSpaceOnUse' patternTransform='scale(50) translate(-980 -735)'%3E%3Cuse fill='%23f9fbfa' href='%23s' y='2'/%3E%3Cuse fill='%23f9fbfa' href='%23s' x='1' y='2'/%3E%3Cuse fill='%23f7f9f8' href='%23s' x='2' y='2'/%3E%3Cuse fill='%23f7f9f8' href='%23s'/%3E%3Cuse fill='%23f4f6f5' href='%23s' x='2'/%3E%3Cuse fill='%23f4f6f5' href='%23s' x='1' y='1'/%3E%3C/pattern%3E%3Cpattern id='b' width='7' height='11' patternUnits='userSpaceOnUse' patternTransform='scale(50) translate(-980 -735)'%3E%3Cg fill='%23f2f4f3'%3E%3Cuse href='%23s'/%3E%3Cuse href='%23s' y='5' /%3E%3Cuse href='%23s' x='1' y='10'/%3E%3Cuse href='%23s' x='2' y='1'/%3E%3Cuse href='%23s' x='2' y='4'/%3E%3Cuse href='%23s' x='3' y='8'/%3E%3Cuse href='%23s' x='4' y='3'/%3E%3Cuse href='%23s' x='4' y='7'/%3E%3Cuse href='%23s' x='5' y='2'/%3E%3Cuse href='%23s' x='5' y='6'/%3E%3Cuse href='%23s' x='6' y='9'/%3E%3C/g%3E%3C/pattern%3E%3Cpattern id='h' width='5' height='13' patternUnits='userSpaceOnUse' patternTransform='scale(50) translate(-980 -735)'%3E%3Cg fill='%23f2f4f3'%3E%3Cuse href='%23s' y='5'/%3E%3Cuse href='%23s' y='8'/%3E%3Cuse href='%23s' x='1' y='1'/%3E%3Cuse href='%23s' x='1' y='9'/%3E%3Cuse href='%23s' x='1' y='12'/%3E%3Cuse href='%23s' x='2'/%3E%3Cuse href='%23s' x='2' y='4'/%3E%3Cuse href='%23s' x='3' y='2'/%3E%3Cuse href='%23s' x='3' y='6'/%3E%3Cuse href='%23s' x='3' y='11'/%3E%3Cuse href='%23s' x='4' y='3'/%3E%3Cuse href='%23s' x='4' y='7'/%3E%3Cuse href='%23s' x='4' y='10'/%3E%3C/g%3E%3C/pattern%3E%3Cpattern id='c' width='17' height='13' patternUnits='userSpaceOnUse' patternTransform='scale(50) translate(-980 -735)'%3E%3Cg fill='%23eff1f0'%3E%3Cuse href='%23s' y='11'/%3E%3Cuse href='%23s' x='2' y='9'/%3E%3Cuse href='%23s' x='5' y='12'/%3E%3Cuse href='%23s' x='9' y='4'/%3E%3Cuse href='%23s' x='12' y='1'/%3E%3Cuse href='%23s' x='16' y='6'/%3E%3C/g%3E%3C/pattern%3E%3Cpattern id='d' width='19' height='17' patternUnits='userSpaceOnUse' patternTransform='scale(50) translate(-980 -735)'%3E%3Cg fill='%23FCFEFD'%3E%3Cuse href='%23s' y='9'/%3E%3Cuse href='%23s' x='16' y='5'/%3E%3Cuse href='%23s' x='14' y='2'/%3E%3Cuse href='%23s' x='11' y='11'/%3E%3Cuse href='%23s' x='6' y='14'/%3E%3C/g%3E%3Cg fill='%23eceeed'%3E%3Cuse href='%23s' x='3' y='13'/%3E%3Cuse href='%23s' x='9' y='7'/%3E%3Cuse href='%23s' x='13' y='10'/%3E%3Cuse href='%23s' x='15' y='4'/%3E%3Cuse href='%23s' x='18' y='1'/%3E%3C/g%3E%3C/pattern%3E%3Cpattern id='e' width='47' height='53' patternUnits='userSpaceOnUse' patternTransform='scale(50) translate(-980 -735)'%3E%3Cg fill='%23FE9F1D'%3E%3Cuse href='%23s' x='2' y='5'/%3E%3Cuse href='%23s' x='16' y='38'/%3E%3Cuse href='%23s' x='46' y='42'/%3E%3Cuse href='%23s' x='29' y='20'/%3E%3C/g%3E%3C/pattern%3E%3Cpattern id='f' width='59' height='71' patternUnits='userSpaceOnUse' patternTransform='scale(50) translate(-980 -735)'%3E%3Cg fill='%23FE9F1D'%3E%3Cuse href='%23s' x='33' y='13'/%3E%3Cuse href='%23s' x='27' y='54'/%3E%3Cuse href='%23s' x='55' y='55'/%3E%3C/g%3E%3C/pattern%3E%3Cpattern id='g' width='139' height='97' patternUnits='userSpaceOnUse' patternTransform='scale(50) translate(-980 -735)'%3E%3Cg fill='%23FE9F1D'%3E%3Cuse href='%23s' x='11' y='8'/%3E%3Cuse href='%23s' x='51' y='13'/%3E%3Cuse href='%23s' x='17' y='73'/%3E%3Cuse href='%23s' x='99' y='57'/%3E%3C/g%3E%3C/pattern%3E%3C/defs%3E%3Crect fill='url(%23a)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23b)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23h)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23c)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23d)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23e)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23f)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23g)' width='100%25' height='100%25'/%3E%3C/svg%3E");
   background-attachment: fixed;
   background-size: cover;
+  font-family: "Effra medium", sans-serif;
 }
-
-.encabezado {
-  margin: 40px 400px 10px;
-  display: grid;
-  grid-template-columns: 1.39fr 0.5fr 0.1fr;
-  justify-content: center;
-}
-#h1 {
-  justify-content: left;
-}
-.encabezado .elemento-enc {
-  height: 100%;
-  padding: 10px;
-  margin: 5px;
-}
-
-.encabezado .elemento-enc h1 {
-  font-family: "Effra Medium", sans-serif;
-  font-size: 1.3rem;
-}
-
-.encabezado img {
-  width: 20px;
-  height: auto;
-}
-
-.contenido {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  justify-content: space-between;
-  align-items: center;
-  margin: 10px 400px;
-  padding: 10px;
-  backdrop-filter: blur(5px);
-  border: 1px solid #122333;
-  border-radius: 3px;
-}
-
-.elemento-con {
-  padding: 10px;
-}
-#fecha {
-  border: none;
-  text-align: right;
-}
-
-.contenido input {
-  background-color: transparent;
-  width: 100%;
-  height: 60px;
-  min-width: 400px;
-  text-align: center;
-  font-family: "Effra Medium", sans-serif;
-  font-size: 1.1rem;
-  border: none;
-  border-bottom: solid 1px;
-  outline: none;
-}
-
-.contenido input::placeholder {
+.table-wrapper {
+  width: 700px;
+  margin: 30px auto;
+  background: transparent;
   padding: 20px;
-  text-align: center;
-  font-size: 1.1rem;
-  font-family: "Effra Light", sans-serif;
+  backdrop-filter: blur(7px);
+  border: 1px solid #122333;
+  border-radius: 2px;
 }
-.contenido button {
-  letter-spacing: 0.5px;
+.table-title {
+  padding-bottom: 10px;
+  margin: 0 0 10px;
+}
+.table-title h2 {
+  margin: 6px 0 0;
+  font-size: 2.5rem;
+}
+.table-title .add-new {
+  color: #fcfefd;
+  float: right;
+  height: 30px;
   font-size: 1.3rem;
-  min-width: 200px;
-}
-button {
+  text-shadow: none;
   box-shadow: 0 0 0 0 rgba(255, 128, 0, 1);
   outline: 2px solid;
   outline-color: #ff8000;
   outline-offset: 0;
   border: none;
-  width: 100%;
-  height: 40px;
   border-radius: 0.5px;
   background: #ff8000;
-  cursor: pointer;
-  font-size: 1.1rem;
-  min-width: 50px;
   transition: all 0.3s;
 }
-button:hover {
+.table-title .add-new:hover {
   box-shadow: 0 0 0 2px rgba(254, 159, 29, 1);
   outline-color: rgba(255, 255, 255, 0);
   outline-offset: 15px;
   background-color: #fe9f1d;
 }
 
-/* Para pantallas de tamaño medio y más grandes */
-@media screen and (min-width: 768px) {
-  .encabezado {
-    margin: 40px auto 10px; 
-    max-width: 800px; 
-  }
-
-  .contenido {
-    margin: 10px auto; 
-    max-width: 800px; 
-  }
-
-  .contenido input {
-    width: 100%; 
-    max-width: 400px; 
-  }
-
-  .contenido button {
-    min-width: 200px; 
-    width: 100%; 
-  }
+.table-title .add-new i {
+  margin-right: 4px;
 }
-
-/* Para pantallas más pequeñas */
-@media screen and (max-width: 767px) {
-  .elemento-enc {
-    margin: 5px; 
-  }
-  .contenido {
-    width: 60%;
-    margin: 10px auto;
-  }
-
-  .contenido input {
-    width: 60px; 
-    max-width: 300px; 
-  }
-
-  .contenido button {
-    min-width: 150px; 
-    width: 100%;
-  }
+table.table {
+  table-layout: fixed;
+  font-family: "Effra light", sans-serif;
+  font-size: 1.5rem;
 }
-
+table.table tr th,
+table.table tr td {
+  border-color: #e9e9e9;
+}
+table.table th i {
+  font-size: 13px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+table.table th:last-child {
+  width: 100px;
+}
+table.table td a {
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 5px;
+  min-width: 24px;
+}
+table.table td a.add {
+  color: #fe9f1d;
+}
+table.table td a.edit {
+  color: #ff8000;
+}
+table.table td a.delete {
+  color: #eb4716;
+}
+table.table td i {
+  font-size: 19px;
+}
+table.table td a.add i {
+  font-size: 24px;
+  margin-right: -1px;
+  position: relative;
+  top: 3px;
+}
+table.table .form-control {
+  height: 32px;
+  line-height: 32px;
+  box-shadow: none;
+  border-radius: 2px;
+}
+table.table .form-control.error {
+  border-color: #f50000;
+}
+table.table td .add {
+  display: none;
+}
