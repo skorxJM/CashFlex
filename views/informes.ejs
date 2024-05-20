@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Informes Financieros</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="resources/Estilos/estilosInf.css" />
+    <link
+      rel="icon"
+      href="resources/Img/iconos/CF-icon.svg"
+      type="image/svg+xml"
+    />
+    <link href="https://fonts.cdnfonts.com/css/effra-heavy" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <h1>Informe Financiero</h1>
+      <a href="home">
+        <button><img src="resources/Img/iconos/Salir.png" /></button>
+      </a>
+    </header>
+    <section class="contenido">
+      <section>
+        <h2 id="total-i">Total de Ingresos: +<%= totalIngresos %></h2>
+      </section>
+
+      <section>
+        <h2 id="total-g">Total de Gastos: -<%= totalGastos %></h2>
+      </section>
+
+      <!-- Gráfico de Ingresos Diarios -->
+      <section>
+        <h3 id="daily-i">Ingresos Diarios</h3>
+        <canvas id="dailyIncomeChart" width="400" height="200"></canvas>
+      </section>
+
+      <!-- Gráfico de Gastos Diarios -->
+      <section>
+        <h3 id="daily-g">Gastos Diarios</h3>
+        <canvas id="dailyExpenseChart" width="400" height="200"></canvas>
+      </section>
+
+      <script>
+        // Gráfico de Ingresos Diarios
+        const dailyIncomeCtx = document.getElementById('dailyIncomeChart').getContext('2d');
+        const dailyIncomeDates = <%- JSON.stringify(dailyIncomeDates) %>;
+        const dailyIncomeAmounts = <%- JSON.stringify(dailyIncomeAmounts) %>;
+
+        const dailyIncomeChart = new Chart(dailyIncomeCtx, {
+          type: 'bar',
+          data: {
+            labels: dailyIncomeDates,
+            datasets: [{
+              label: 'Ingresos Diarios',
+              data: dailyIncomeAmounts,
+              backgroundColor: '#fe9f1d'
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+
+        // Gráfico de Gastos Diarios
+        const dailyExpenseCtx = document.getElementById('dailyExpenseChart').getContext('2d');
+        const dailyExpenseDates = <%- JSON.stringify(dailyExpenseDates) %>;
+        const dailyExpenseAmounts = <%- JSON.stringify(dailyExpenseAmounts) %>;
+
+        const dailyExpenseChart = new Chart(dailyExpenseCtx, {
+          type: 'bar',
+          data: {
+            labels: dailyExpenseDates,
+            datasets: [{
+              label: 'Gastos Diarios',
+              data: dailyExpenseAmounts,
+              backgroundColor: '#eb4716'
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      </script>
+    </section>
+  </body>
+</html>

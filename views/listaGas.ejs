@@ -31,16 +31,16 @@
       href="resources/Img/iconos/CF-icon.svg"
       type="image/svg+xml"
     />
-    <title>Lista de Ingresos</title>
+    <title>Lista de Gastos</title>
   </head>
   <body>
     <div class="container">
       <div class="table-wrapper">
         <div class="table-title">
           <div class="row">
-            <div class="col-sm-8"><h2>Lista de Ingresos</h2></div>
+            <div class="col-sm-8"><h2>Lista de Gastos</h2></div>
             <div class="col-sm-4">
-              <a href="ingresos">
+              <a href="gastos">
                 <button type="button" class="btn btn-info add-new">
                   <i class="fa fa-plus"></i> Añadir Nuevo
                 </button>
@@ -58,19 +58,16 @@
             </tr>
           </thead>
           <tbody>
-            <% ingresos.forEach(ingreso => { %>
+            <% gastos.forEach(gasto => { %>
             <tr>
-              <td data-name="Descripcion"><%= ingreso.Descripcion %></td>
-              <td data-name="cantidad">$<%= ingreso.cantidad %></td>
-              <td data-name="fecha"><%= ingreso.fecha %></td>
+              <td data-name="Descripcion"><%= gasto.Descripcion %></td>
+              <td data-name="cantidad">-$<%= gasto.cantidad %></td>
+              <td data-name="fecha"><%= gasto.fecha %></td>
               <td>
-                <a href="/editIngreso/<%= ingreso.id_Ingresos %>" class="edit"
+                <a href="/editGasto/<%= gasto.Id_gastos %>" class="edit"
                   ><i class="fa fa-edit" data-toggle="tooltip" title="Edit"></i
                 ></a>
-                <a
-                  href="/deleteIngreso/<%= ingreso.id_Ingresos %>"
-                  class="delete"
-                >
+                <a href="/deleteGasto/<%= gasto.Id_gastos %>" class="delete">
                   <i
                     class="fa-regular fa-trash-can"
                     data-toggle="tooltip"

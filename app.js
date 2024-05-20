@@ -2,11 +2,22 @@ const exp = require("constants");
 const express = require("express");
 const app = express();
 
+app.use("/", require("./router"));
+
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 const dotenv = require("dotenv");
 dotenv.config({ path: "./env/.env" });
+
+app.use(
+  "/editIngreso/resources",
+  express.static("public", { extensions: ["css", "js"] })
+);
+app.use(
+  "/editGasto/resources",
+  express.static("public", { extensions: ["css", "js"] })
+);
 
 app.use("/resources", express.static("public"));
 app.use("/resources", express.static(__dirname + "/public"));
@@ -168,8 +179,8 @@ app.post("/registrarIngreso", async (req, res) => {
           alertTitle: "Ingreso",
           alertMessage: "¡Ingreso registrado correctamente!",
           alertIcon: "success",
-          showConfirmButton: true,
-          timer: false,
+          showConfirmButton: false,
+          timer: 1500,
           ruta: "ingresos",
         });
       }
@@ -191,48 +202,23 @@ app.get("/listaIng", (req, res) => {
   });
 });
 
-// Editar ingreso
-app.post("/editIngreso/:id", async (req, res) => {
-  const { fecha, descripcion, cantidad } = req.body;
-  const id_usu = req.session.id_usu;
-  const id = req.params.id;
+app.post("/updateIngreso", async (req, res) => {
+  const fecha = req.body.fecha;
+  const descripcion = req.body.descripcion;
+  const cantidad = req.body.cantidad;
+  const id_Ingresos = req.body.id_Ingresos;
 
   connection.query(
-    "UPDATE ingreso SET ? WHERE id_ingresos = ? AND Usuario_id_usu = ?",
+    "UPDATE ingreso SET ? WHERE id_Ingresos = ?",
     [
-      {
-        fecha: fecha,
-        Descripcion: descripcion,
-        cantidad: cantidad,
-      },
-      id,
-      id_usu,
+      { fecha: fecha, Descripcion: descripcion, cantidad: cantidad },
+      id_Ingresos,
     ],
     async (error, results) => {
       if (error) {
         console.log(error);
-        res.json({ success: false });
       } else {
-        res.json({ success: true });
-      }
-    }
-  );
-});
-
-// Eliminar ingreso
-app.post("/deleteIngreso/:id?", async (req, res) => {
-  const id_usu = req.session.id_usu;
-  const id = req.params.id_ingresos;
-
-  connection.query(
-    "DELETE FROM ingreso WHERE id_ingresos = ? AND Usuario_id_usu = ?",
-    [id, id_usu],
-    async (error, results) => {
-      if (error) {
-        console.log(error);
-        res.json({ success: false });
-      } else {
-        res.json({ success: true });
+        res.redirect("/listaIng");
       }
     }
   );
@@ -262,8 +248,8 @@ app.post("/registrarGasto", async (req, res) => {
           alertTitle: "Gasto",
           alertMessage: "¡Gasto registrado correctamente!",
           alertIcon: "success",
-          showConfirmButton: true,
-          timer: false,
+          showConfirmButton: false,
+          timer: 1500,
           ruta: "gastos",
         });
       }
@@ -271,39 +257,123 @@ app.post("/registrarGasto", async (req, res) => {
   );
 });
 
-// Registro de meta
-app.post("/registrarMeta", async (req, res) => {
+//lista gastos
+app.get("/listaGas", (req, res) => {
+  const id_usu = req.session.id_usu;
+  const sql = "SELECT * FROM gasto WHERE Usuario_id_usu = ?";
+  connection.query(sql, [id_usu], (err, results) => {
+    if (err) {
+      // Manejo de errores
+      return res.status(500).send("Error al obtener el historial");
+    }
+    // Renderizar la página HTML con los resultados
+    res.render("listaGas", { gastos: results });
+  });
+});
+
+app.post("/updateGasto", async (req, res) => {
   const fecha = req.body.fecha;
-  const fecha_vencimiento = req.body.fecha_vencimiento;
   const descripcion = req.body.descripcion;
   const cantidad = req.body.cantidad;
-  const id_usu = req.session.id_usu;
+  const Id_gastos = req.body.id_gastos;
 
   connection.query(
-    "INSERT INTO gasto SET ?",
-    {
-      fecha: fecha,
-      fecha: fecha_vencimiento,
-      Descripcion: descripcion,
-      cantidad: cantidad,
-      Usuario_id_usu: id_usu,
-    },
+    "UPDATE gasto SET ? WHERE id_gastos = ?",
+    [{ fecha: fecha, Descripcion: descripcion, cantidad: cantidad }, Id_gastos],
     async (error, results) => {
       if (error) {
         console.log(error);
       } else {
-        res.render("metas", {
-          alert: true,
-          alertTitle: "Meta",
-          alertMessage: "¡Meta registrada correctamente!",
-          alertIcon: "success",
-          showConfirmButton: true,
-          timer: false,
-          ruta: "metas",
-        });
+        res.redirect("/listaGas");
       }
     }
   );
+});
+
+// Get total ingresos and total gastos
+app.get("/informes", async (req, res) => {
+  if (!req.session.id_usu) {
+    return res.redirect("/login"); // Redirige al usuario al login si no está autenticado
+  }
+
+  const id_usu = req.session.id_usu;
+
+  const totalIngresos = await new Promise((resolve, reject) => {
+    connection.query(
+      "SELECT SUM(cantidad) as total FROM ingreso WHERE Usuario_id_usu = ?",
+      [id_usu],
+      (err, results) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(results[0].total || 0);
+        }
+      }
+    );
+  });
+
+  const totalGastos = await new Promise((resolve, reject) => {
+    connection.query(
+      "SELECT SUM(cantidad) as total FROM gasto WHERE Usuario_id_usu = ?",
+      [id_usu],
+      (err, results) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(results[0].total || 0);
+        }
+      }
+    );
+  });
+
+  const dailyIngresos = await new Promise((resolve, reject) => {
+    connection.query(
+      "SELECT fecha, SUM(cantidad) as total FROM ingreso WHERE Usuario_id_usu = ? GROUP BY fecha",
+      [id_usu],
+      (err, results) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(results);
+        }
+      }
+    );
+  });
+
+  const dailyGastos = await new Promise((resolve, reject) => {
+    connection.query(
+      "SELECT fecha, SUM(cantidad) as total FROM gasto WHERE Usuario_id_usu = ? GROUP BY fecha",
+      [id_usu],
+      (err, results) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(results);
+        }
+      }
+    );
+  });
+
+  const dailyIncomeDates = dailyIngresos.map((row) => row.fecha);
+  const dailyIncomeAmounts = dailyIngresos.map((row) => row.total);
+  const dailyExpenseDates = dailyGastos.map((row) => row.fecha);
+  const dailyExpenseAmounts = dailyGastos.map((row) => row.total);
+
+  console.log("Daily Ingresos Results: ", dailyIngresos);
+  console.log("Daily Gastos Results: ", dailyGastos);
+  console.log("Daily Income Dates: ", dailyIncomeDates);
+  console.log("Daily Income Amounts: ", dailyIncomeAmounts);
+  console.log("Daily Expense Dates: ", dailyExpenseDates);
+  console.log("Daily Expense Amounts: ", dailyExpenseAmounts);
+
+  res.render("informes", {
+    totalIngresos,
+    totalGastos,
+    dailyIncomeDates,
+    dailyIncomeAmounts,
+    dailyExpenseDates,
+    dailyExpenseAmounts,
+  });
 });
 
 app.get("/home", (req, res) => {

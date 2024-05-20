@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ingresos</title>
+    <title>Editar Gasto</title>
     <link href="resources/Estilos/estilosOpc.css" rel="stylesheet" />
     <link href="https://fonts.cdnfonts.com/css/effra-heavy" rel="stylesheet" />
     <link
@@ -13,31 +13,36 @@
     />
   </head>
   <body>
+    <% if(gasto) { %>
     <header>
       <section class="encabezado">
         <div id="h1" class="elemento-enc">
-          <h1>Agregar Ingreso</h1>
+          <h1>Editar Gasto</h1>
         </div>
 
         <div class="elemento-enc">
-          <a href="listaIng">
-            <button>Lista de Ingresos</button>
-          </a>
-        </div>
-
-        <div class="elemento-enc">
-          <a href="home">
-            <button>
-              <img src="resources/Img/iconos/Salir.png" />
-            </button>
+          <a href="/listaGas">
+            <button class="btn-volver">Volver</button>
           </a>
         </div>
       </section>
     </header>
-    <form action="/registrarIngreso" method="post">
+    <form action="/updateGasto" method="post">
       <section class="contenido">
+        <input
+          id="id_gastos"
+          name="id_gastos"
+          value="<%= gasto.Id_gastos %>"
+          hidden
+        />
         <div class="elemento-fecha">
-          <input id="fecha" name="fecha" type="date" required="true" />
+          <input
+            id="fecha"
+            name="fecha"
+            type="date"
+            required="true"
+            value="<%= gasto.fecha %>"
+          />
         </div>
 
         <div class="elemento-con">
@@ -46,6 +51,7 @@
             name="descripcion"
             required="true"
             placeholder="Descripción"
+            value="<%= gasto.Descripcion %>"
           />
         </div>
 
@@ -57,30 +63,16 @@
             name="cantidad"
             required="true"
             placeholder="$0.00"
+            value="<%= gasto.cantidad %>"
           />
         </div>
 
         <div class="elemento-con">
-          <button>Agregar +</button>
+          <button>Actualizar</button>
         </div>
-
-        <div class="elemento-con"></div>
       </section>
     </form>
-    <script src="resources/Js/opc.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <% if(typeof alert != "undefined") { %>
-    <script>
-      Swal.fire({
-        title: "<%= alertTitle %>",
-        text: "<%= alertMessage %>",
-        icon: "<%= alertIcon %>",
-        showConfirmButton: <%= showConfirmButton %>,
-        timer: <%= timer %>
-      }).then(()=>{
-        window.location= "/<%= ruta %>"
-      })
-    </script>
     <% } %>
+    <script src="resources/Js/opc.js"></script>
   </body>
 </html>
